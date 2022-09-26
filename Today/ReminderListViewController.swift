@@ -11,7 +11,9 @@ class ReminderListViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let listLayout = listLayout()
+        collectionView.collectionViewLayout = listLayout
     }
 
     private func listLayout() -> UICollectionViewCompositionalLayout {
