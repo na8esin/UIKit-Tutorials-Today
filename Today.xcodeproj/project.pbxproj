@@ -105,10 +105,10 @@
 		5B08200B28DAB13C00BB9C31 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				5B08204328E2D71300BB9C31 /* ListViewController */,
 				5B08203C28DD911500BB9C31 /* Models */,
 				5B08200C28DAB13C00BB9C31 /* AppDelegate.swift */,
 				5B08200E28DAB13C00BB9C31 /* SceneDelegate.swift */,
-				5B08201028DAB13C00BB9C31 /* ReminderListViewController.swift */,
 				5B08201228DAB13C00BB9C31 /* Main.storyboard */,
 				5B08201528DAB13D00BB9C31 /* Assets.xcassets */,
 				5B08201728DAB13D00BB9C31 /* LaunchScreen.storyboard */,
@@ -142,6 +142,14 @@
 				5B08204128E2D5E000BB9C31 /* UIColor+Today.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5B08204328E2D71300BB9C31 /* ListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5B08201028DAB13C00BB9C31 /* ReminderListViewController.swift */,
+			);
+			path = ListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
