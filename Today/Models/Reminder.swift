@@ -2,7 +2,7 @@
 //  Reminder.swift
 //  Today
 //
-//  Created by 渡辺孝之 on 2022/09/23.
+//  Created by t-watanabe on 2022/09/23.
 //
 
 import Foundation
