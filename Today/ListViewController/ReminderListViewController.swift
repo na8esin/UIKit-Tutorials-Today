@@ -18,7 +18,7 @@ class ReminderListViewController: UICollectionViewController {
         
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
         
-        dataSource = DataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: String) in
+        dataSource = DataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Reminder.ID) in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         }
         
