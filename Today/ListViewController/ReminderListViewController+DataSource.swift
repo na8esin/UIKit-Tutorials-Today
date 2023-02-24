@@ -4,10 +4,13 @@ extension ReminderListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Reminder.ID>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Reminder.ID>
     
-    func updateSnapshot() {
+    func updateSnapshot(reloading ids: [Reminder.ID] = []) {
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(reminders.map { $0.id })
+        if !ids.isEmpty {
+            snapshot.reloadItems(ids)
+        }
         dataSource.apply(snapshot)
     }
     
@@ -48,6 +51,8 @@ extension ReminderListViewController {
         var reminder = reminder(withId: id)
         reminder.isComplete.toggle()
         updateReminder(reminder)
+        // ChangeNotifier時代のnotifyListenersみたいなコード
+        updateSnapshot(reloading: [id])
     }
 
     private func doneButtonConfiguration(for reminder: Reminder)
