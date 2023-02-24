@@ -16,7 +16,7 @@ struct Reminder: Identifiable {
 }
 
 extension Array where Element == Reminder {
-    func indexOfReminder(with id: Reminder.ID) -> Self.Index {
+    func indexOfReminder(withId id: Reminder.ID) -> Self.Index {
         guard let index = firstIndex(where: { $0.id == id }) else {
             fatalError()
         }

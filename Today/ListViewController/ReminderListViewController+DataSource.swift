@@ -1,33 +1,48 @@
-//
-//  ReminderListViewController+DataSource.swift
-//  Today
-//
-//  Created by t-watanabe on 2022/09/28.
-//
-
 import UIKit
 
 extension ReminderListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Reminder.ID>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Reminder.ID>
     
-    func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, id: Reminder.ID) {
-        let reminder = reminder(for: id)
+    func cellRegistrationHandler(
+        cell:
+            UICollectionViewListCell, indexPath: IndexPath, id: Reminder.ID
+    ) {
+        let reminder = reminder(withId: id)
         var contentConfiguration = cell.defaultContentConfiguration()
         contentConfiguration.text = reminder.title
         contentConfiguration.secondaryText = reminder.dueDate.dayAndTimeText
-        contentConfiguration.secondaryTextProperties.font = UIFont.preferredFont(forTextStyle: .caption1)
+        contentConfiguration.secondaryTextProperties.font = UIFont.preferredFont(
+            forTextStyle: .caption1)
         cell.contentConfiguration = contentConfiguration
         
         var doneButtonConfiguration = doneButtonConfiguration(for: reminder)
         doneButtonConfiguration.tintColor = .todayListCellDoneButtonTint
-        cell.accessories = [ .customView(configuration: doneButtonConfiguration), .disclosureIndicator(displayed: .always) ]
+        cell.accessories = [
+            .customView(configuration: doneButtonConfiguration), .disclosureIndicator(displayed: .always)
+        ]
         
         var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
         backgroundConfiguration.backgroundColor = .todayListCellBackground
         cell.backgroundConfiguration = backgroundConfiguration
     }
+
+    func reminder(withId id: Reminder.ID) -> Reminder {
+        let index = reminders.indexOfReminder(withId: id)
+        return reminders[index]
+    }
     
+    func updateReminder(_ reminder: Reminder) {
+        let index = reminders.indexOfReminder(withId: reminder.id)
+        reminders[index] = reminder
+    }
+    
+    func completeReminder(withId id: Reminder.ID) {
+        var reminder = reminder(withId: id)
+        reminder.isComplete.toggle()
+        updateReminder(reminder)
+    }
+
     private func doneButtonConfiguration(for reminder: Reminder) -> UICellAccessory.CustomViewConfiguration {
         let symbolName = reminder.isComplete ? "circle.fill" : "circle"
         let symbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title1)
@@ -37,14 +52,4 @@ extension ReminderListViewController {
         return UICellAccessory.CustomViewConfiguration(customView: button, placement: .leading(displayed: .always))
     }
     
-    func reminder(for id: Reminder.ID) -> Reminder {
-        let index = reminders.indexOfReminder(with: id)
-        return reminders[index]
-    }
-    
-    func update(_ reminder: Reminder, with id: Reminder.ID) {
-        let index = reminders.indexOfReminder(with: id)
-        reminders[index] = reminder
-    }
-
 }
