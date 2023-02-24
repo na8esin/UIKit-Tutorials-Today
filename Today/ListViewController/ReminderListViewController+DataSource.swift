@@ -4,6 +4,13 @@ extension ReminderListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, Reminder.ID>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Reminder.ID>
     
+    func updateSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(reminders.map { $0.id })
+        dataSource.apply(snapshot)
+    }
+    
     func cellRegistrationHandler(
         cell:
             UICollectionViewListCell, indexPath: IndexPath, id: Reminder.ID
