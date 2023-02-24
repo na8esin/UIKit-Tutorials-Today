@@ -43,13 +43,19 @@ extension ReminderListViewController {
         updateReminder(reminder)
     }
 
-    private func doneButtonConfiguration(for reminder: Reminder) -> UICellAccessory.CustomViewConfiguration {
+    private func doneButtonConfiguration(for reminder: Reminder)
+    -> UICellAccessory.CustomViewConfiguration
+    {
         let symbolName = reminder.isComplete ? "circle.fill" : "circle"
         let symbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title1)
         let image = UIImage(systemName: symbolName, withConfiguration: symbolConfiguration)
-        let button = UIButton()
+        let button = ReminderDoneButton()
+        // Touch Up Inside
+        // ボタンを押したあとにボタンの近くで指を離したときにメソッドが呼び出される
+        button.addTarget(self, action: #selector(didPressDoneButton(_:)), for: .touchUpInside)
+        button.id = reminder.id
         button.setImage(image, for: .normal)
-        return UICellAccessory.CustomViewConfiguration(customView: button, placement: .leading(displayed: .always))
+        return UICellAccessory.CustomViewConfiguration(
+            customView: button, placement: .leading(displayed: .always))
     }
-    
 }
