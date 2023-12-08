@@ -1,7 +1,7 @@
 //
 //  ReminderViewController.swift
 //  Today
-//  
+//
 //  Created by t-watanabe on 2023/07/28.
 //
 
@@ -10,16 +10,17 @@ import UIKit
 
 class ReminderViewController: UICollectionViewController {
   private typealias DataSource = UICollectionViewDiffableDataSource<Int, Row>
+  private typealias Snapshot = NSDiffableDataSourceSnapshot<Int, Row>
   
   var reminder: Reminder
   private var dataSource: DataSource!
   
   init(reminder: Reminder) {
-      self.reminder = reminder
-      var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-      listConfiguration.showsSeparators = false
-      let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
-      super.init(collectionViewLayout: listLayout)
+    self.reminder = reminder
+    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+    listConfiguration.showsSeparators = false
+    let listLayout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
+    super.init(collectionViewLayout: listLayout)
   }
   
   // failable initializerというものらしい
@@ -27,19 +28,22 @@ class ReminderViewController: UICollectionViewController {
   // こういう実装でいいらしい。
   // 他のパターンは、Interface Builder が初期するパターンなのか？
   required init?(coder: NSCoder) {
-      fatalError("Always initialize ReminderViewController using init(reminder:)")
+    fatalError("Always initialize ReminderViewController using init(reminder:)")
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
+    
     dataSource = DataSource(collectionView: collectionView) {
       (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Row) in
-                  return collectionView.dequeueConfiguredReusableCell(
-                      using: cellRegistration, for: indexPath, item: itemIdentifier)
+      return collectionView.dequeueConfiguredReusableCell(
+        using: cellRegistration, for: indexPath, item: itemIdentifier)
     }
-  }
     
+    updateSnapshot()
+  }
+  
   func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row) {
     var contentConfiguration = cell.defaultContentConfiguration()
     contentConfiguration.text = text(for: row)
@@ -50,11 +54,21 @@ class ReminderViewController: UICollectionViewController {
   }
   
   func text(for row: Row) -> String? {
-      switch row {
-      case .date: return reminder.dueDate.dayText
-      case .notes: return reminder.notes
-      case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
-      case .title: return reminder.title
-      }
+    switch row {
+    case .date: return reminder.dueDate.dayText
+    case .notes: return reminder.notes
+    case .time: return reminder.dueDate.formatted(date: .omitted, time: .shortened)
+    case .title: return reminder.title
+    }
+  }
+  
+  private func updateSnapshot() {
+    var snapshot = Snapshot()
+    snapshot.appendSections([0])
+    snapshot.appendItems(
+      [Row.title, Row.date, Row.time, Row.notes]
+      ,toSection: 0
+    )
+    dataSource.apply(snapshot)
   }
 }
