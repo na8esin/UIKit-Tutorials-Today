@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7zv-ce-wrP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k7q-aZ-Z7t">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,10 +38,29 @@
                             <outlet property="delegate" destination="7zv-ce-wrP" id="kXh-b9-CZu"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="iIu-Sc-qjv"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTg-AY-mbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="-108"/>
+            <point key="canvasLocation" x="710.76923076923072" y="-108.05687203791469"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Dlw-tp-1Ld">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k7q-aZ-Z7t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wTb-bN-b8Y">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7zv-ce-wrP" kind="relationship" relationship="rootViewController" id="YFG-kR-ff4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSw-nI-mg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-218.46153846153845" y="-108.05687203791469"/>
         </scene>
     </scenes>
     <resources>
