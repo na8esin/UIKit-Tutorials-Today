@@ -24,6 +24,8 @@
 		5B7C9D33293823F400A5A754 /* ReminderDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C9D32293823F400A5A754 /* ReminderDoneButton.swift */; };
 		5B855B562A739641002BCF20 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B855B552A739641002BCF20 /* ReminderViewController.swift */; };
 		5B855B592A73A924002BCF20 /* ReminderViewController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B855B582A73A924002BCF20 /* ReminderViewController+Row.swift */; };
+		5BC2EB862B23D86F00823467 /* configureWithTransparentBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2EB842B23D86F00823467 /* configureWithTransparentBackground.png */; };
+		5BC2EB872B23D86F00823467 /* configureWithOpaqueBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BC2EB852B23D86F00823467 /* configureWithOpaqueBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		5B855B552A739641002BCF20 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		5B855B582A73A924002BCF20 /* ReminderViewController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderViewController+Row.swift"; sourceTree = "<group>"; };
 		5BC2EB762B2337CF00823467 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5BC2EB842B23D86F00823467 /* configureWithTransparentBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = configureWithTransparentBackground.png; path = ../../../../../Desktop/configureWithTransparentBackground.png; sourceTree = "<group>"; };
+		5BC2EB852B23D86F00823467 /* configureWithOpaqueBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = configureWithOpaqueBackground.png; path = ../../../../../Desktop/configureWithOpaqueBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 		5B08200028DAB13C00BB9C31 = {
 			isa = PBXGroup;
 			children = (
+				5BC2EB822B23D83D00823467 /* screenshot */,
 				5BC2EB762B2337CF00823467 /* README.md */,
 				5B08200B28DAB13C00BB9C31 /* Today */,
 				5B08202228DAB13D00BB9C31 /* TodayTests */,
@@ -175,6 +180,23 @@
 				5B855B582A73A924002BCF20 /* ReminderViewController+Row.swift */,
 			);
 			path = DetailViewController;
+			sourceTree = "<group>";
+		};
+		5BC2EB822B23D83D00823467 /* screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				5BC2EB832B23D84A00823467 /* displaying-reminder-details */,
+			);
+			path = screenshot;
+			sourceTree = "<group>";
+		};
+		5BC2EB832B23D84A00823467 /* displaying-reminder-details */ = {
+			isa = PBXGroup;
+			children = (
+				5BC2EB852B23D86F00823467 /* configureWithOpaqueBackground.png */,
+				5BC2EB842B23D86F00823467 /* configureWithTransparentBackground.png */,
+			);
+			path = "displaying-reminder-details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +304,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B08201928DAB13D00BB9C31 /* LaunchScreen.storyboard in Resources */,
+				5BC2EB872B23D86F00823467 /* configureWithOpaqueBackground.png in Resources */,
+				5BC2EB862B23D86F00823467 /* configureWithTransparentBackground.png in Resources */,
 				5B08201628DAB13D00BB9C31 /* Assets.xcassets in Resources */,
 				5B08201428DAB13C00BB9C31 /* Main.storyboard in Resources */,
 			);
